@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "ES2019",
+    "module": "ES2020",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "outDir": ".web-out",
+    "rootDir": "."
+  },
+  "include": [
+    "assets/scripts/core/**/*.ts",
+    "assets/scripts/battle/**/*.ts",
+    "web/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    ".sim-out",
+    ".web-out",
+    "assets/scripts/ui",
+    "assets/scripts/platform"
+  ],
+  "comments": [
+    "浏览器运行原型：把纯逻辑层（core/battle）编译为 ESM，供 web/renderer.ts 在浏览器中直接运行。",
+    "相对 import 缺 .js 后缀的问题由 tools/build-web.mjs 后处理修复。"
+  ]
+}
