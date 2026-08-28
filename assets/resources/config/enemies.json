@@ -1,0 +1,66 @@
+{
+  "version": "1.0",
+  "note": "怪物数值来源：docs/游戏设计方案.md 第 6.1 节；speed 为校准后值（GDD 原值 × 1.5，校准依据见 docs/数值校准报告.md）。hpFactor 为 HP 公式乘数：实际 HP = baseHp × hpWaveBase^(w-1) × hpLevelBase^(n-1) × hpFactor × levelHpScale",
+  "enemies": [
+    {
+      "id": "normal",
+      "name": "普通怪",
+      "type": "normal",
+      "hpFactor": 1,
+      "speed": 1.65,
+      "armor": 0,
+      "bounty": 8,
+      "leakDamage": 1,
+      "ability": "none",
+      "gddOriginalSpeed": 1.1
+    },
+    {
+      "id": "fast",
+      "name": "快速怪",
+      "type": "fast",
+      "hpFactor": 0.6,
+      "speed": 2.85,
+      "armor": 0,
+      "bounty": 6,
+      "leakDamage": 1,
+      "ability": "ignoreSlow30",
+      "gddOriginalSpeed": 1.9
+    },
+    {
+      "id": "armor",
+      "name": "护甲怪",
+      "type": "armor",
+      "hpFactor": 1.8,
+      "speed": 1.2,
+      "armor": 10,
+      "bounty": 14,
+      "leakDamage": 2,
+      "ability": "flatArmor",
+      "gddOriginalSpeed": 0.8
+    },
+    {
+      "id": "flying",
+      "name": "飞行怪",
+      "type": "flying",
+      "hpFactor": 0.9,
+      "speed": 2.1,
+      "armor": 0,
+      "bounty": 12,
+      "leakDamage": 1,
+      "ability": "straightLine",
+      "gddOriginalSpeed": 1.4
+    },
+    {
+      "id": "boss",
+      "name": "BOSS",
+      "type": "boss",
+      "hpFactor": 5,
+      "speed": 1.05,
+      "armor": 15,
+      "bounty": 80,
+      "leakDamage": 5,
+      "ability": "regen2pctPer10s",
+      "gddOriginalSpeed": 0.7
+    }
+  ]
+}

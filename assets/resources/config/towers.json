@@ -1,0 +1,72 @@
+{
+  "version": "1.0",
+  "note": "塔数值来源：docs/游戏设计方案.md 第 3.1 / 3.3 节。升级规则：Lv1→2 造价=基础×0.8，Lv2→3=基础×1.4；每级伤害×1.6、射程+0.3、Lv3 攻速+10%",
+  "towers": [
+    {
+      "id": "arrow",
+      "name": "箭塔",
+      "role": "通用单体",
+      "cost": 80,
+      "attackType": "single",
+      "levels": [
+        { "level": 1, "upgradeCost": 0, "damage": 12, "range": 3.2, "attackSpeed": 1.5, "skin": "arrow_l1" },
+        { "level": 2, "upgradeCost": 64, "damage": 19, "range": 3.5, "attackSpeed": 1.5, "skin": "arrow_l2" },
+        { "level": 3, "upgradeCost": 112, "damage": 31, "range": 3.8, "attackSpeed": 1.65, "skin": "arrow_l3" }
+      ]
+    },
+    {
+      "id": "cannon",
+      "name": "炮塔",
+      "role": "范围溅射",
+      "cost": 150,
+      "attackType": "splash",
+      "splashRadius": 1.2,
+      "levels": [
+        { "level": 1, "upgradeCost": 0, "damage": 55, "range": 2.6, "attackSpeed": 0.55, "splashRadius": 1.2, "skin": "cannon_l1" },
+        { "level": 2, "upgradeCost": 120, "damage": 88, "range": 2.9, "attackSpeed": 0.55, "splashRadius": 1.4, "skin": "cannon_l2" },
+        { "level": 3, "upgradeCost": 210, "damage": 141, "range": 3.2, "attackSpeed": 0.61, "splashRadius": 1.6, "skin": "cannon_l3" }
+      ]
+    },
+    {
+      "id": "frost",
+      "name": "冰塔",
+      "role": "控场减速",
+      "cost": 120,
+      "attackType": "slow",
+      "slowFactor": 0.4,
+      "slowDuration": 2.0,
+      "levels": [
+        { "level": 1, "upgradeCost": 0, "damage": 8, "range": 2.8, "attackSpeed": 1.0, "slowFactor": 0.4, "slowDuration": 2.0, "skin": "frost_l1" },
+        { "level": 2, "upgradeCost": 96, "damage": 13, "range": 3.1, "attackSpeed": 1.0, "slowFactor": 0.45, "slowDuration": 2.5, "skin": "frost_l2" },
+        { "level": 3, "upgradeCost": 168, "damage": 21, "range": 3.4, "attackSpeed": 1.1, "slowFactor": 0.5, "slowDuration": 3.0, "skin": "frost_l3" }
+      ]
+    },
+    {
+      "id": "tesla",
+      "name": "电塔",
+      "role": "连锁穿透",
+      "cost": 180,
+      "attackType": "chain",
+      "ignoreArmor": true,
+      "chainDecay": 0.6,
+      "levels": [
+        { "level": 1, "upgradeCost": 0, "damage": 26, "range": 3.0, "attackSpeed": 0.8, "chainCount": 3, "skin": "tesla_l1" },
+        { "level": 2, "upgradeCost": 144, "damage": 42, "range": 3.3, "attackSpeed": 0.8, "chainCount": 4, "skin": "tesla_l2" },
+        { "level": 3, "upgradeCost": 252, "damage": 67, "range": 3.6, "attackSpeed": 0.88, "chainCount": 5, "skin": "tesla_l3" }
+      ]
+    },
+    {
+      "id": "poison",
+      "name": "毒塔",
+      "role": "持续伤害",
+      "cost": 140,
+      "attackType": "dot",
+      "dotMaxStacks": 3,
+      "levels": [
+        { "level": 1, "upgradeCost": 0, "damage": 10, "range": 2.8, "attackSpeed": 0.7, "dotDps": 6, "dotDuration": 3.0, "skin": "poison_l1" },
+        { "level": 2, "upgradeCost": 112, "damage": 16, "range": 3.1, "attackSpeed": 0.7, "dotDps": 10, "dotDuration": 3.0, "skin": "poison_l2" },
+        { "level": 3, "upgradeCost": 196, "damage": 26, "range": 3.4, "attackSpeed": 0.77, "dotDps": 16, "dotDuration": 4.0, "skin": "poison_l3" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "version": "1.0",
+  "note": "波次生成参数，公式来源 docs/游戏设计方案.md 第 5.3/7.1 节；baseHp 与 hpLevelBase 为实测校准值（校准依据见 docs/数值校准报告.md，GDD 原值 baseHp=60 / hpLevelBase=1.12）",
+  "main": {
+    "waveCount": 10,
+    "countFormula": "N(w) = 6 + floor(w * 1.2)",
+    "hpFormula": "HP(w,n) = baseHp * hpWaveBase^(w-1) * hpLevelBase^(n-1) * hpFactor * levelHpScale",
+    "baseHp": 24,
+    "hpWaveBase": 1.15,
+    "hpLevelBase": 1.015,
+    "spawnInterval": 0.6,
+    "waveInterval": 3.0,
+    "waveRewardFormula": "15 + 5 * w",
+    "clearRewardFormula": "60 + 20 * n",
+    "bossWave": 10,
+    "bossWaveFromChapter": 4,
+    "bossWaveExtra": 5
+  },
+  "endless": {
+    "countFormula": "N(w) = 8 + floor(w * 1.5)",
+    "hpFormula": "HP(w) = baseHp * hpWaveBase^(w-1) * hpFactor",
+    "baseHp": 24,
+    "hpWaveBase": 1.16,
+    "spawnInterval": 0.5,
+    "waveInterval": 3.0,
+    "bossEveryWaves": 5,
+    "extraBossEveryWaves": 10,
+    "speedBonusEveryWaves": 10,
+    "speedBonusStep": 0.05,
+    "speedBonusMax": 0.5,
+    "baseHealEveryWaves": 10,
+    "baseHealAmount": 2,
+    "passiveEveryWaves": 3
+  },
+  "limits": {
+    "maxAliveEnemies": 60,
+    "maxBullets": 120,
+    "baseHp": 20,
+    "initGold": 250,
+    "sellRefundRate": 0.6,
+    "passiveChoices": 3,
+    "maxPassivePicks": 9
+  }
+}

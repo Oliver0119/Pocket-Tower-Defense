@@ -1,0 +1,44 @@
+{
+  "version": "1.0",
+  "note": "技能数值来源：docs/游戏设计方案.md 第 4.1 / 4.2 节",
+  "active": [
+    {
+      "id": "airstrike",
+      "name": "空袭打击",
+      "desc": "对全场敌人造成当前波次总血量 8% 的伤害",
+      "cooldown": 45,
+      "unlockLevel": 3,
+      "params": { "damageRatioOfWaveHp": 0.08 }
+    },
+    {
+      "id": "timeFreeze",
+      "name": "时间凝滞",
+      "desc": "全场敌人减速 60%，持续 5 秒",
+      "cooldown": 60,
+      "unlockLevel": 8,
+      "params": { "slowFactor": 0.6, "duration": 5 }
+    },
+    {
+      "id": "goldRush",
+      "name": "金币狂潮",
+      "desc": "10 秒内击杀赏金翻倍",
+      "cooldown": 90,
+      "unlockLevel": 15,
+      "params": { "bountyMultiplier": 2, "duration": 10 }
+    }
+  ],
+  "passive": [
+    { "id": "swiftWind", "name": "迅捷之风", "desc": "全塔攻速 +10%", "effect": { "stat": "attackSpeed", "mode": "mul", "value": 0.1 }, "maxStacks": 5, "weight": 3 },
+    { "id": "deadlyStrike", "name": "致命一击", "desc": "暴击率 +5%，暴击 2 倍伤害", "effect": { "stat": "critRate", "mode": "add", "value": 0.05 }, "maxStacks": 5, "weight": 3 },
+    { "id": "goldenHand", "name": "黄金之手", "desc": "击杀金币 +20%", "effect": { "stat": "bounty", "mode": "mul", "value": 0.2 }, "maxStacks": 5, "weight": 3 },
+    { "id": "eagleEye", "name": "鹰眼", "desc": "全塔射程 +8%", "effect": { "stat": "range", "mode": "mul", "value": 0.08 }, "maxStacks": 3, "weight": 2 },
+    { "id": "powerBless", "name": "力量祝福", "desc": "全塔伤害 +8%", "effect": { "stat": "damage", "mode": "mul", "value": 0.08 }, "maxStacks": 5, "weight": 3 },
+    { "id": "frostSpread", "name": "寒霜蔓延", "desc": "减速效果 +10%", "effect": { "stat": "slow", "mode": "add", "value": 0.1 }, "maxStacks": 3, "weight": 2 },
+    { "id": "blastUp", "name": "爆裂强化", "desc": "溅射范围 +15%", "effect": { "stat": "splash", "mode": "mul", "value": 0.15 }, "maxStacks": 3, "weight": 2 },
+    { "id": "lifeSteal", "name": "生命汲取", "desc": "每击杀 25 只恢复基地 1 点生命", "effect": { "stat": "killHeal", "mode": "add", "value": 25 }, "maxStacks": 3, "weight": 1 },
+    { "id": "armorPierce", "name": "破甲弹头", "desc": "护甲穿透 +10%", "effect": { "stat": "armorPierce", "mode": "add", "value": 0.1 }, "maxStacks": 5, "weight": 2 },
+    { "id": "richStart", "name": "富矿开局", "desc": "立即获得 50 金币", "effect": { "stat": "instantGold", "mode": "add", "value": 50 }, "maxStacks": 99, "weight": 2 },
+    { "id": "timeSand", "name": "时光沙漏", "desc": "主动技能冷却 -15%", "effect": { "stat": "cooldown", "mode": "mul", "value": -0.15 }, "maxStacks": 3, "weight": 1 },
+    { "id": "artisan", "name": "精工巧匠", "desc": "塔升级费用 -10%", "effect": { "stat": "upgradeCost", "mode": "mul", "value": -0.1 }, "maxStacks": 3, "weight": 2 }
+  ]
+}

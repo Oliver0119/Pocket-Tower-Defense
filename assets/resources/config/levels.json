@@ -1,0 +1,53 @@
+{
+  "version": "1.0",
+  "note": "主线 30 关（5 章 x 6 关）与支线挑战关 10 关，来源：docs/游戏设计方案.md 第 5.1 / 5.2 节。hpScale：教学关 1-3 为 0.7，每章第 1 关 0.8，每章第 6 关 1.15",
+  "main": [
+    { "id": 1,  "chapter": 1, "name": "初入草原", "towerSlots": 8,  "initGold": 250, "allowedTowers": ["arrow", "frost"], "mix": { "normal": 0.8, "fast": 0.2 }, "bossWaves": [], "hpScale": 0.7 },
+    { "id": 2,  "chapter": 1, "name": "箭塔试炼", "towerSlots": 8,  "initGold": 250, "allowedTowers": ["arrow", "frost"], "mix": { "normal": 0.8, "fast": 0.2 }, "bossWaves": [], "hpScale": 0.7 },
+    { "id": 3,  "chapter": 1, "name": "寒霜初现", "towerSlots": 8,  "initGold": 250, "allowedTowers": ["arrow", "frost"], "mix": { "normal": 0.8, "fast": 0.2 }, "bossWaves": [], "hpScale": 0.7 },
+    { "id": 4,  "chapter": 1, "name": "疾风来袭", "towerSlots": 8,  "initGold": 250, "allowedTowers": ["arrow", "frost"], "mix": { "normal": 0.8, "fast": 0.2 }, "bossWaves": [], "hpScale": 1.0 },
+    { "id": 5,  "chapter": 1, "name": "草原奔袭", "towerSlots": 8,  "initGold": 250, "allowedTowers": ["arrow", "frost"], "mix": { "normal": 0.8, "fast": 0.2 }, "bossWaves": [], "hpScale": 1.0 },
+    { "id": 6,  "chapter": 1, "name": "草原尽头", "towerSlots": 8,  "initGold": 250, "allowedTowers": ["arrow", "frost"], "mix": { "normal": 0.8, "fast": 0.2 }, "bossWaves": [], "hpScale": 1.15 },
+
+    { "id": 7,  "chapter": 2, "name": "峡谷关口", "towerSlots": 10, "initGold": 250, "allowedTowers": ["arrow", "frost", "tesla"], "mix": { "normal": 0.55, "fast": 0.2, "armor": 0.25 }, "bossWaves": [], "hpScale": 0.8 },
+    { "id": 8,  "chapter": 2, "name": "铁甲先锋", "towerSlots": 10, "initGold": 250, "allowedTowers": ["arrow", "frost", "tesla"], "mix": { "normal": 0.55, "fast": 0.2, "armor": 0.25 }, "bossWaves": [], "hpScale": 1.0 },
+    { "id": 9,  "chapter": 2, "name": "电弧回廊", "towerSlots": 10, "initGold": 250, "allowedTowers": ["arrow", "frost", "tesla"], "mix": { "normal": 0.55, "fast": 0.2, "armor": 0.25 }, "bossWaves": [], "hpScale": 1.0 },
+    { "id": 10, "chapter": 2, "name": "碎石窄道", "towerSlots": 10, "initGold": 250, "allowedTowers": ["arrow", "frost", "tesla"], "mix": { "normal": 0.55, "fast": 0.2, "armor": 0.25 }, "bossWaves": [], "hpScale": 1.0 },
+    { "id": 11, "chapter": 2, "name": "重甲压境", "towerSlots": 10, "initGold": 250, "allowedTowers": ["arrow", "frost", "tesla"], "mix": { "normal": 0.55, "fast": 0.2, "armor": 0.25 }, "bossWaves": [], "hpScale": 1.0 },
+    { "id": 12, "chapter": 2, "name": "峡谷突围", "towerSlots": 10, "initGold": 250, "allowedTowers": ["arrow", "frost", "tesla"], "mix": { "normal": 0.55, "fast": 0.2, "armor": 0.25 }, "bossWaves": [], "hpScale": 1.15 },
+
+    { "id": 13, "chapter": 3, "name": "浮空之径", "towerSlots": 12, "initGold": 250, "allowedTowers": ["arrow", "frost", "tesla", "cannon"], "mix": { "normal": 0.45, "fast": 0.2, "armor": 0.15, "flying": 0.2 }, "bossWaves": [], "hpScale": 0.8 },
+    { "id": 14, "chapter": 3, "name": "翼影掠空", "towerSlots": 12, "initGold": 250, "allowedTowers": ["arrow", "frost", "tesla", "cannon"], "mix": { "normal": 0.45, "fast": 0.2, "armor": 0.15, "flying": 0.2 }, "bossWaves": [], "hpScale": 1.0 },
+    { "id": 15, "chapter": 3, "name": "炮火长廊", "towerSlots": 12, "initGold": 250, "allowedTowers": ["arrow", "frost", "tesla", "cannon"], "mix": { "normal": 0.45, "fast": 0.2, "armor": 0.15, "flying": 0.2 }, "bossWaves": [], "hpScale": 1.0 },
+    { "id": 16, "chapter": 3, "name": "云上伏击", "towerSlots": 12, "initGold": 250, "allowedTowers": ["arrow", "frost", "tesla", "cannon"], "mix": { "normal": 0.45, "fast": 0.2, "armor": 0.15, "flying": 0.2 }, "bossWaves": [], "hpScale": 1.0 },
+    { "id": 17, "chapter": 3, "name": "群鸦压城", "towerSlots": 12, "initGold": 250, "allowedTowers": ["arrow", "frost", "tesla", "cannon"], "mix": { "normal": 0.45, "fast": 0.2, "armor": 0.15, "flying": 0.2 }, "bossWaves": [], "hpScale": 1.0 },
+    { "id": 18, "chapter": 3, "name": "坠空之战", "towerSlots": 12, "initGold": 250, "allowedTowers": ["arrow", "frost", "tesla", "cannon"], "mix": { "normal": 0.45, "fast": 0.2, "armor": 0.15, "flying": 0.2 }, "bossWaves": [], "hpScale": 1.15 },
+
+    { "id": 19, "chapter": 4, "name": "毒沼边境", "towerSlots": 12, "initGold": 250, "allowedTowers": ["arrow", "frost", "tesla", "cannon", "poison"], "mix": { "normal": 0.4, "fast": 0.18, "armor": 0.15, "flying": 0.17 }, "bossWaves": [5, 10], "hpScale": 0.8 },
+    { "id": 20, "chapter": 4, "name": "沼毒巨兽", "towerSlots": 12, "initGold": 250, "allowedTowers": ["arrow", "frost", "tesla", "cannon", "poison"], "mix": { "normal": 0.4, "fast": 0.18, "armor": 0.15, "flying": 0.17 }, "bossWaves": [5, 10], "hpScale": 1.0 },
+    { "id": 21, "chapter": 4, "name": "腐蚀之路", "towerSlots": 12, "initGold": 250, "allowedTowers": ["arrow", "frost", "tesla", "cannon", "poison"], "mix": { "normal": 0.4, "fast": 0.18, "armor": 0.15, "flying": 0.17 }, "bossWaves": [5, 10], "hpScale": 1.0 },
+    { "id": 22, "chapter": 4, "name": "双兽围城", "towerSlots": 12, "initGold": 250, "allowedTowers": ["arrow", "frost", "tesla", "cannon", "poison"], "mix": { "normal": 0.4, "fast": 0.18, "armor": 0.15, "flying": 0.17 }, "bossWaves": [5, 10], "hpScale": 1.0 },
+    { "id": 23, "chapter": 4, "name": "毒雾弥漫", "towerSlots": 12, "initGold": 250, "allowedTowers": ["arrow", "frost", "tesla", "cannon", "poison"], "mix": { "normal": 0.4, "fast": 0.18, "armor": 0.15, "flying": 0.17 }, "bossWaves": [5, 10], "hpScale": 1.0 },
+    { "id": 24, "chapter": 4, "name": "沼底决战", "towerSlots": 12, "initGold": 250, "allowedTowers": ["arrow", "frost", "tesla", "cannon", "poison"], "mix": { "normal": 0.4, "fast": 0.18, "armor": 0.15, "flying": 0.17 }, "bossWaves": [5, 10], "hpScale": 1.15 },
+
+    { "id": 25, "chapter": 5, "name": "王座之门", "towerSlots": 14, "initGold": 250, "allowedTowers": ["arrow", "frost", "tesla", "cannon", "poison"], "mix": { "normal": 0.38, "fast": 0.17, "armor": 0.15, "flying": 0.2 }, "bossWaves": [10], "doubleBossWaves": [10], "hpScale": 0.8 },
+    { "id": 26, "chapter": 5, "name": "铁壁长阶", "towerSlots": 14, "initGold": 250, "allowedTowers": ["arrow", "frost", "tesla", "cannon", "poison"], "mix": { "normal": 0.38, "fast": 0.17, "armor": 0.15, "flying": 0.2 }, "bossWaves": [10], "doubleBossWaves": [10], "hpScale": 1.0 },
+    { "id": 27, "chapter": 5, "name": "空天绞杀", "towerSlots": 14, "initGold": 250, "allowedTowers": ["arrow", "frost", "tesla", "cannon", "poison"], "mix": { "normal": 0.38, "fast": 0.17, "armor": 0.15, "flying": 0.2 }, "bossWaves": [10], "doubleBossWaves": [10], "hpScale": 1.0 },
+    { "id": 28, "chapter": 5, "name": "重甲洪流", "towerSlots": 14, "initGold": 250, "allowedTowers": ["arrow", "frost", "tesla", "cannon", "poison"], "mix": { "normal": 0.38, "fast": 0.17, "armor": 0.15, "flying": 0.2 }, "bossWaves": [10], "doubleBossWaves": [10], "hpScale": 1.0 },
+    { "id": 29, "chapter": 5, "name": "王座回廊", "towerSlots": 14, "initGold": 250, "allowedTowers": ["arrow", "frost", "tesla", "cannon", "poison"], "mix": { "normal": 0.38, "fast": 0.17, "armor": 0.15, "flying": 0.2 }, "bossWaves": [10], "doubleBossWaves": [10], "hpScale": 1.0 },
+    { "id": 30, "chapter": 5, "name": "守塔终章", "towerSlots": 14, "initGold": 250, "allowedTowers": ["arrow", "frost", "tesla", "cannon", "poison"], "mix": { "normal": 0.38, "fast": 0.17, "armor": 0.15, "flying": 0.2 }, "bossWaves": [10], "doubleBossWaves": [10], "hpScale": 1.15 }
+  ],
+  "challenges": [
+    { "id": "C1",  "name": "精兵简政", "baseLevel": 8,  "constraints": { "maxTowers": 6 }, "goal": { "type": "clear" }, "reward": 300 },
+    { "id": "C2",  "name": "箭无虚发", "baseLevel": 10, "constraints": { "allowedTowers": ["arrow", "frost"] }, "goal": { "type": "noLeak" }, "reward": 400 },
+    { "id": "C3",  "name": "贫困挑战", "baseLevel": 12, "constraints": { "initGoldRate": 0.6 }, "goal": { "type": "clear" }, "reward": 500 },
+    { "id": "C4",  "name": "极速攻防", "baseLevel": 14, "constraints": { "enemySpeedBonus": 0.25 }, "goal": { "type": "timeLimit", "seconds": 150 }, "reward": 600 },
+    { "id": "C5",  "name": "静默作战", "baseLevel": 16, "constraints": { "disableActiveSkills": true }, "goal": { "type": "clear" }, "reward": 700 },
+    { "id": "C6",  "name": "三塔奇迹", "baseLevel": 18, "constraints": { "maxTowers": 3 }, "goal": { "type": "noLeak" }, "reward": 800 },
+    { "id": "C7",  "name": "铁壁防线", "baseLevel": 20, "constraints": { "allowedTowers": ["cannon", "poison"] }, "goal": { "type": "noDamage" }, "reward": 900 },
+    { "id": "C8",  "name": "电光火石", "baseLevel": 22, "constraints": { "allowedTowers": ["tesla", "arrow"] }, "goal": { "type": "kills", "count": 150 }, "reward": 1000 },
+    { "id": "C9",  "name": "吝啬商人", "baseLevel": 25, "constraints": { "upgradeCostRate": 1.5 }, "goal": { "type": "goldLeft", "amount": 400 }, "reward": 1200 },
+    { "id": "C10", "name": "无尽试炼", "baseLevel": 30, "constraints": { "initGoldRate": 0.4, "allSlots": true }, "goal": { "type": "noLeak" }, "reward": "限定皮肤" }
+  ],
+  "challengesNote": "挑战关的限定条件与目标校验逻辑见 docs/游戏设计方案.md 第 5.2 节；MVP 阶段先落数据，规则引擎 TODO（P2）"
+}
