@@ -1,0 +1,18 @@
+{
+  "name": "pocket-tower-defense",
+  "version": "0.1.0",
+  "private": true,
+  "description": "《口袋守塔》轻量塔防 - 微信小游戏（Cocos Creator 3.x + TypeScript）",
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.sim.json --noEmit",
+    "sim": "tsc -p tsconfig.sim.json && node .sim-out/tools/simulate.js",
+    "gen:levels": "tsc -p tsconfig.sim.json && node .sim-out/tools/gen-levels.js"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.1",
+    "typescript": "^5.6.3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

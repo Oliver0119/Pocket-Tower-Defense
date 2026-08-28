@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ES2019",
+    "module": "ES2015",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["assets/scripts/*"]
+    }
+  },
+  "include": ["assets/scripts/**/*.ts"],
+  "exclude": ["node_modules", ".sim-out", "tools"],
+  "comments": [
+    "编辑器侧配置：'cc' 类型由 Cocos Creator 3.x 内置提供，本仓库不自带引擎声明文件。",
+    "纯逻辑层（core/battle）的独立类型检查与无头模拟请使用 tsconfig.sim.json（npm run typecheck / npm run sim）。"
+  ]
+}

@@ -35,3 +35,16 @@ Thumbs.db
 .env
 .env.local
 *.pem
+
+# ==============================
+# 构建与模拟产物
+# ==============================
+.sim-out/
+
+# ==============================
+# 原始大图不入库（包体预算：主包 <= 4MB）
+# 仅保留 icon-144 / icon-512 作为成品图标
+# ==============================
+assets/resources/logo/icon-master.png
+assets/resources/logo/icon-1024.png
+assets/resources/logo/App_icon_*.png

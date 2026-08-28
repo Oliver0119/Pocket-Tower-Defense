@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "ES2019",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "outDir": ".sim-out",
+    "rootDir": ".",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["assets/scripts/*"]
+    }
+  },
+  "include": [
+    "assets/scripts/core/**/*.ts",
+    "assets/scripts/battle/**/*.ts",
+    "tools/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    ".sim-out",
+    "assets/scripts/ui",
+    "assets/scripts/platform"
+  ]
+}
