@@ -6,7 +6,10 @@
   "scripts": {
     "typecheck": "tsc -p tsconfig.sim.json --noEmit",
     "sim": "tsc -p tsconfig.sim.json && node .sim-out/tools/simulate.js",
-    "gen:levels": "tsc -p tsconfig.sim.json && node .sim-out/tools/gen-levels.js"
+    "tune": "tsc -p tsconfig.sim.json && node .sim-out/tools/tune.js",
+    "build:web": "node tools/build-web.mjs",
+    "start": "npm run build:web && node tools/serve.mjs",
+    "smoke:web": "npm run build:web && node tools/smoke-web.mjs"
   },
   "devDependencies": {
     "@types/node": "^22.20.1",

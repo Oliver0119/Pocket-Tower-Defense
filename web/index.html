@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>口袋守塔 · MVP 运行原型</title>
+  <style>
+    :root {
+      --brand: #FF8A3D;
+      --sky: #5FD3F3;
+      --grass: #8FC768;
+      --danger: #FF5A5F;
+      --cream: #FFF6E5;
+      --ink: #3B2C20;
+      --muted: #9A8B7A;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: #2E2419; color: var(--ink);
+      font-family: "Sarasa Gothic SC", "Microsoft YaHei", system-ui, sans-serif;
+      display: flex; justify-content: center; align-items: flex-start; min-height: 100vh;
+    }
+    #app { display: flex; gap: 16px; padding: 16px; align-items: flex-start; }
+    .stage { position: relative; }
+    canvas {
+      background: var(--grass); border-radius: 18px; display: block;
+      box-shadow: 0 12px 32px rgba(0,0,0,.35);
+    }
+    .panel {
+      width: 300px; background: var(--cream); border-radius: 18px; padding: 16px;
+      box-shadow: 0 12px 32px rgba(0,0,0,.35);
+    }
+    h1 { font-size: 20px; margin: 0 0 4px; }
+    .sub { font-size: 12px; color: var(--muted); margin-bottom: 12px; line-height: 1.6; }
+    .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+    .stat { background: #fff; border-radius: 12px; padding: 8px 10px; }
+    .stat b { display: block; font-size: 18px; }
+    .stat span { font-size: 11px; color: var(--muted); }
+    .section-title { font-size: 13px; font-weight: 700; margin: 12px 0 6px; color: var(--muted); }
+    .tower-bar { display: grid; gap: 6px; }
+    .tower-btn {
+      display: flex; justify-content: space-between; align-items: center; gap: 8px;
+      background: #fff; border: 2px solid transparent; border-radius: 12px;
+      padding: 8px 10px; cursor: pointer; font-size: 13px; text-align: left;
+    }
+    .tower-btn:hover { border-color: #E5D5C0; }
+    .tower-btn.active { border-color: var(--brand); background: #FFF1E3; }
+    .tower-btn .cost { font-size: 12px; color: var(--muted); }
+    .tower-btn .role { font-size: 11px; color: var(--muted); }
+    .actions { display: flex; gap: 8px; margin-top: 12px; }
+    button.act {
+      flex: 1; border: none; border-radius: 12px; padding: 10px; cursor: pointer;
+      background: var(--brand); color: #fff; font-size: 13px; font-weight: 700;
+    }
+    button.act.ghost { background: #fff; color: var(--ink); border: 1px solid #E5D5C0; }
+    button.act:disabled { opacity: .45; cursor: not-allowed; }
+    .help { margin-top: 12px; font-size: 11px; color: var(--muted); line-height: 1.8; }
+    #overlay {
+      position: absolute; inset: 0; background: rgba(46,36,25,.72);
+      border-radius: 18px; display: none; flex-direction: column;
+      align-items: center; justify-content: center; gap: 10px; padding: 24px;
+    }
+    #overlay.show { display: flex; }
+    #overlay .title { color: #fff; font-size: 20px; font-weight: 700; }
+    #overlay .desc { color: #E8DCCE; font-size: 12px; }
+    .pick {
+      width: 100%; max-width: 320px; background: var(--cream); border-radius: 16px;
+      padding: 12px 14px; cursor: pointer; border: 2px solid transparent; text-align: left;
+    }
+    .pick:hover { border-color: var(--brand); }
+    .pick b { display: block; font-size: 15px; }
+    .pick span { font-size: 12px; color: var(--muted); }
+    .banner {
+      position: absolute; left: 50%; top: 18px; transform: translateX(-50%);
+      background: rgba(59,44,32,.9); color: #FFE3C8; padding: 8px 16px;
+      border-radius: 999px; font-size: 13px; font-weight: 700; display: none;
+    }
+    .banner.show { display: block; }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="stage">
+      <canvas id="canvas" width="576" height="896"></canvas>
+      <div id="banner" class="banner"></div>
+      <div id="overlay">
+        <div class="title" id="ov-title">选择一项强化</div>
+        <div class="desc" id="ov-desc">点击一条被动，立即生效</div>
+        <div id="offers"></div>
+      </div>
+    </div>
+
+    <aside class="panel">
+      <h1>口袋守塔 · MVP 原型</h1>
+      <div class="sub">纯逻辑层在浏览器直接运行，用于验证战斗手感与数值。点击塔位建塔，再点已建塔升级。</div>
+
+      <div class="stats">
+        <div class="stat"><b id="s-wave">0 / 10</b><span>波次</span></div>
+        <div class="stat"><b id="s-gold">250</b><span>金币</span></div>
+        <div class="stat"><b id="s-hp">20 / 20</b><span>基地生命</span></div>
+        <div class="stat"><b id="s-kill">0</b><span>击杀</span></div>
+      </div>
+
+      <div class="section-title">建造（先选塔种，再点塔位）</div>
+      <div class="tower-bar" id="tower-bar"></div>
+
+      <div class="section-title">操作（Shift+点击 = 拆除）</div>
+      <div class="actions">
+        <button class="act" id="btn-next">开始 / 下一波</button>
+        <button class="act ghost" id="btn-pause">暂停</button>
+      </div>
+      <div class="actions">
+        <button class="act ghost" id="btn-speed">速度 ×1</button>
+        <button class="act ghost" id="btn-level">切换关卡</button>
+      </div>
+
+      <div class="help" id="help"></div>
+    </aside>
+  </div>
+
+  <!-- 编译产物由 tools/build-web.mjs 输出到 .web-out，服务器将其映射到 /__build/ -->
+  <script type="module" src="/__build/web/renderer.js"></script>
+</body>
+</html>
