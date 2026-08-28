@@ -1,7 +1,7 @@
 # 口袋守塔 · 轻量塔防（微信小游戏）
 
 > 个人副业项目：Cocos Creator 3.x + TypeScript 开发的休闲塔防微信小游戏，同步导出 PC 网页版，纯广告变现。
-> 当前状态：**设计定稿、工程未初始化**（零源码）。
+> 当前状态：**MVP 战斗内核已完成并通过无头验证**（83% 通关率），Cocos 编辑器工程待初始化。
 
 ---
 
@@ -10,8 +10,9 @@
 | 文档 | 说明 | 读者 |
 |---|---|---|
 | **[docs/SDD.md](docs/SDD.md)** | **软件设计文档**：项目背景、技术栈与依赖、架构与模块划分（Mermaid）、数据模型与接口定义、业务流程、分阶段开发计划（里程碑 + 任务清单 + 优先级）、风险与验收标准 | 开发、评审 |
-| [docs/游戏设计方案.md](docs/游戏设计方案.md) | **GDD 游戏设计方案**（v1.0）：核心玩法、塔防类型与地图规模、5 塔 × 3 级数值、技能系统、30 主线关 + 10 挑战关 + 无尽模式、怪物设计、数值公式与平衡性验算、性能与美术规范 | 策划、开发、美术 |
-| [docs/小游戏副业规划-轻量塔防第一作.md](docs/小游戏副业规划-轻量塔防第一作.md) | 副业规划：市场调研、变现模型与收益测算、上架合规清单（软著/备案/流量主）、竞品拆解、MVP 玩法与技术架构草案 | 项目负责人 |
+| [docs/游戏设计方案.md](docs/游戏设计方案.md) | **GDD 游戏设计方案**（v1.0）：核心玩法、塔防类型与地图规模、5 塔 × 3 级数值、技能系统、30 主线关 + 10 挑战关 + 无尽模式、怪物设计、数值公式、性能与美术规范 | 策划、开发、美术 |
+| **[docs/数值校准报告.md](docs/数值校准报告.md)** | **数值校准报告**：GDD 原值实测 0% 通关 → 参数扫描 → 校准后 83% 通关 / 单局 261s；含完整偏差对照表与调参入口 | 策划、开发 |
+| [docs/小游戏副业规划-轻量塔防第一作.md](docs/小游戏副业规划-轻量塔防第一作.md) | 副业规划：市场调研、变现模型与收益测算、上架合规清单（软著/备案/流量主）、竞品拆解 | 项目负责人 |
 | [docs/开发里程碑.md](docs/开发里程碑.md) | 8 周周级任务清单（按 10~15 小时/周排布） | 开发 |
 | [docs/UI设计稿更新清单.md](docs/UI设计稿更新清单.md) | 画布逐节点更新指令（对齐 GDD v1.0 数值），含 NodeId 与「原内容 → 新内容」 | UI、开发 |
 | [.workbuddy/memory/MEMORY.md](.workbuddy/memory/MEMORY.md) | 项目长期备忘：已定的技术/业务决策与红线 | 全体 |
@@ -34,25 +35,39 @@
 
 ---
 
-## 目录结构（当前）
+## 快速开始
+
+```bash
+npm install       # 安装 typescript / @types/node（仅开发期依赖）
+npm run typecheck # 纯逻辑层类型检查（core / battle / tools）
+npm run sim       # 无头模拟：30 关自动战斗 + 公式校验
+npm run tune      # 参数扫描：移速系数 × 基础HP × 关卡系数
+```
+
+`npm run sim` 当前结果：**通关率 83%（25/30，失败集中在终章第 26~30 关）、单局平均 261 秒、平均漏怪 5 只/关**。详见 [docs/数值校准报告.md](docs/数值校准报告.md)。
+
+## 目录结构
 
 ```
 wx-mobile-game/
-├── README.md                 # 本文件（文档索引）
-├── docs/
-│   ├── SDD.md                # 软件设计文档
-│   ├── 游戏设计方案.md        # GDD
-│   ├── 小游戏副业规划-轻量塔防第一作.md
-│   ├── 开发里程碑.md
-│   └── UI设计稿更新清单.md
-└── .workbuddy/
-    ├── memory/               # 项目记忆与工作日志
-    └── screenshots/          # 设计稿校验截图
+├── README.md
+├── docs/                        # 设计、方案与校准报告
+├── assets/
+│   ├── scripts/
+│   │   ├── core/                # GameManager / EventCenter / ObjectPool / ConfigLoader / Rng / types
+│   │   ├── battle/              # BattleRuntime / WaveController / TowerSystem / EnemyManager / SkillSystem / EconomyService
+│   │   ├── ui/                  # BattleHUD / SkillChoosePanel / ResultPanel（Cocos 组件）
+│   │   └── platform/            # AdService / SaveManager / CloudService
+│   ├── resources/config/        # towers / enemies / levels / skills / waves / map（数值外置）
+│   └── scenes/                  # Home / Battle（待 Cocos 编辑器创建）
+├── tools/                       # simulate（全量验证）/ tune（参数扫描）/ AutoPlayer（共享策略）
+├── tsconfig.json                # 编辑器侧（'cc' 类型由 Cocos 提供）
+└── tsconfig.sim.json            # 纯逻辑侧（可在 Node 下编译运行）
 ```
 
-> 源码目录（`assets/`、`src/`）尚未创建，工程初始化后按 `docs/SDD.md` 第 2.3 节的目录规划建立。
+**架构约定**：`core/` 与 `battle/` 不 import 任何 Cocos 模块，可在 Node 下无头运行，便于数值回归；`ui/` 与 `platform/` 通过事件总线订阅战斗事件，两层不互相持有引用。
 
----
+> Cocos 场景、预制体与图集需在 Cocos Creator 编辑器中创建（本仓库只提交代码与配置）。
 
 ## 设计资产
 
