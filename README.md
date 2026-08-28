@@ -38,11 +38,42 @@
 ## 快速开始
 
 ```bash
-npm install       # 安装 typescript / @types/node（仅开发期依赖）
-npm run typecheck # 纯逻辑层类型检查（core / battle / tools）
-npm run sim       # 无头模拟：30 关自动战斗 + 公式校验
-npm run tune      # 参数扫描：移速系数 × 基础HP × 关卡系数
+npm install      # 安装 typescript / @types/node（仅开发期依赖）
+npm start        # ⭐ 构建并启动 Web 原型 → http://localhost:5173/web/index.html
 ```
+
+三种运行方式，按需要选用：
+
+| 方式 | 命令 | 用途 | 是否需要 Cocos |
+|---|---|---|---|
+| **① Web 原型（推荐先跑这个）** | `npm start` | 浏览器里真实试玩：建塔、出怪、波次、三选一、结算 | ❌ 不需要 |
+| ② 无头模拟 | `npm run sim` | 30 关自动战斗，输出通关率与单局时长（数值回归） | ❌ 不需要 |
+| ③ 参数扫描 | `npm run tune` | 扫描移速 × 基础HP × 关卡系数，找平衡区间 | ❌ 不需要 |
+
+其他命令：`npm run typecheck`（纯逻辑层类型检查）、`npm run build:web`（只构建不启动）、`npm run smoke:web`（用 DOM 桩在 Node 里冒烟测试整条运行链路）。
+
+### Web 原型操作说明
+
+| 操作 | 方式 |
+|---|---|
+| 建造 | 右侧先点选塔种 → 再点画布上的白色虚线塔位 |
+| 升级 | 点击已建造的塔 |
+| 拆除 | `Shift` + 点击塔（返还 60%） |
+| 开始 / 下一波 | 「开始 / 下一波」按钮或空格键 |
+| 波次间三选一 | 浮层里点选一条被动 |
+| 切换关卡 / 倍速 / 暂停 | 右侧对应按钮（×1 / ×2 / ×3） |
+
+### 在 Cocos Creator 中打开（后续正式开发）
+
+场景、预制体与图集尚未创建，需先在编辑器里建工程再合入代码：
+
+1. Cocos Dashboard → 新建空白 3.x 项目（选择 **empty** 模板，不含示例资源）
+2. 关闭编辑器，把本仓库的 `assets/`、`tsconfig.json`、`package.json` 覆盖到新工程根目录
+3. 重新打开工程，等待编译；在 `assets/scenes/` 下新建 `Home` / `Battle` 场景
+4. 把 `assets/scripts/ui/` 下的组件挂到对应节点，并在属性检查器里绑定 Label / Node 引用
+5. 微信小游戏导出：菜单栏「项目 → 构建发布」选择 **微信小游戏**，填入 AppID
+
+> `assets/scripts/core` 与 `assets/scripts/battle` 不依赖引擎，可直接在编辑器中使用，也可在 Node 下无头运行。
 
 `npm run sim` 当前结果：**通关率 83%（25/30，失败集中在终章第 26~30 关）、单局平均 261 秒、平均漏怪 5 只/关**。详见 [docs/数值校准报告.md](docs/数值校准报告.md)。
 
